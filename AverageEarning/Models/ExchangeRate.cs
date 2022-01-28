@@ -8,12 +8,5 @@
         public Rate[] Rates { get; set; }
     }
 
-    public class Rate
-    {
-        public string No { get; set; }
-        public string EffectiveDate { get; set; }
-        public float Mid { get; set; }
-    }
 
-    
 }
