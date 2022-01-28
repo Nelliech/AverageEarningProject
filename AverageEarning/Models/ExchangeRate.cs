@@ -2,17 +2,17 @@
 {
     public class ExchangeRate
     {
-        public string table { get; set; }
-        public string currency { get; set; }
-        public string code { get; set; }
-        public Rate[] rates { get; set; }
+        public string Table { get; set; }
+        public string Currency { get; set; }
+        public string Code { get; set; }
+        public Rate[] Rates { get; set; }
     }
 
     public class Rate
     {
-        public string no { get; set; }
-        public string effectiveDate { get; set; }
-        public float mid { get; set; }
+        public string No { get; set; }
+        public string EffectiveDate { get; set; }
+        public float Mid { get; set; }
     }
 
     
