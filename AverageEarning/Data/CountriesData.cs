@@ -8,8 +8,6 @@ namespace AverageEarning.Data
             new Country() { Name="UK", Code = "GBP", Tax = 25, FixedCost = 600 },
             new Country() { Name="DE", Code = "Euro", Tax = 20, FixedCost = 800 },
             new Country() { Name="PL", Code = "PLN", Tax = 19, FixedCost = 1200 }
-            };
-
-        
+            };     
     }
 }
