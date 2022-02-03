@@ -4,5 +4,6 @@
     {
         public string CountryName { get; set; }
         public float Rate { get; set; }
+        public string Code { get; set; }
     }
 }
