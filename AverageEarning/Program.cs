@@ -1,3 +1,5 @@
+using AverageEarning.Services.Interface;
+using AverageEarning.Services.Service;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<ICountriesData, CountriesData>();
 
 var app = builder.Build();
 

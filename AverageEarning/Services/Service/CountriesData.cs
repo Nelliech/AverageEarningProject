@@ -1,7 +1,7 @@
 ﻿using AverageEarning.Models;
 using AverageEarning.Services.Interface;
 
-namespace AverageEarning.Data
+namespace AverageEarning.Services.Service
 {
     public class CountriesData : ICountriesData
     {
