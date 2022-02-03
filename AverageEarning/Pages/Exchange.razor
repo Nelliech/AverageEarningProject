@@ -1,7 +1,31 @@
-﻿<h3>Exchange</h3>
-<EditForm class="d-flex justify-content-center" Model="@DailyRate" OnValidSubmit="">
+﻿@page "/Exchange/"
 
+<h3>Exchange</h3>
+<EditForm class="d-flex justify-content-center" Model="@dailyRate" OnValidSubmit="@RecalculateStake">
+    <div>
+        <InputNumber class="form-control" @bind-Value="dailyRate.Rate"/>
+        <InputSelect Name="Code" @bind-Value="dailyRate.Code">
+            Waluta:
+            @foreach(var codes in Enum.GetValues(typeof(Code)))
+            {
+                <option value="@codes">@codes</option>
+            }
+        </InputSelect>
+        <button type="submit" class="btn btn-primary">Policz</button>
+    </div>
 </EditForm>
 @code {
+    public DailyRate dailyRate { get; set; }
+    [Inject]
+    public NavigationManager NavManager { get; set; }
 
+    protected override async Task OnInitializedAsync()
+    {
+        dailyRate = new DailyRate();
+    }
+
+    private async void RecalculateStake()
+    {
+        NavManager.NavigateTo("/MonthlyEarning/" + dailyRate.Rate +"/"+dailyRate.Code);
+    }
 }
