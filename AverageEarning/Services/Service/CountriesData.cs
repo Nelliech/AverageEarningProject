@@ -4,7 +4,6 @@ namespace AverageEarning.Data
 {
     public class CountriesData
     {
-         
         public ICollection<Country> GetAllCountries()
         {
             ICollection<Country> Countries = new List<Country>() {
