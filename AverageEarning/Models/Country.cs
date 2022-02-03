@@ -5,6 +5,6 @@
         public string? Name { get; set; }
         public string? Code { get; set; }
         public float Tax { get; set; }
-        public float? FixedCost { get; set; }
+        public float FixedCost { get; set; }
     }
 }
