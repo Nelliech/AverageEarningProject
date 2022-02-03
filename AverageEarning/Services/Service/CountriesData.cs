@@ -1,8 +1,9 @@
 ﻿using AverageEarning.Models;
+using AverageEarning.Services.Interface;
 
 namespace AverageEarning.Data
 {
-    public class CountriesData
+    public class CountriesData : ICountriesData
     {
         public ICollection<Country> GetAllCountries()
         {
