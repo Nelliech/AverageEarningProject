@@ -1,5 +1,5 @@
-﻿
-@page "/MonthlyEarning/{Rate:float}/{Code}"
+﻿@page "/MonthlyEarning/{Rate:float}/{Code}"
+ 
 @using AverageEarning.Services.Interface
 
 <h3>MonthlyEarning</h3>
@@ -8,6 +8,8 @@
 
     [Inject]
     protected ICountriesData CountriesData { get; set; }
+    [Inject]
+    protected IHttpClientFactory _clientFactory { get; set; }
 
     [Parameter]
     public float Rate{ get; set; }
@@ -15,12 +17,29 @@
     [Parameter]
     public string Code{ get; set; }
 
-    
+    ExchangeRate exchangeRate;
+    string errorString;
 
     public ICollection<Country> Countries{ get;set; }
 
     protected override async Task OnInitializedAsync()
     {
         Countries = CountriesData.GetAllCountries();
+
+        var request = new HttpRequestMessage(HttpMethod.Get,
+        "");
+
+        var client = _clientFactory.CreateClient();
+
+        HttpResponseMessage respones = await client.SendAsync(request);
+
+        if(respones.IsSuccessStatusCode)
+        {
+            exchangeRate = await respones.Content.ReadFromJsonAsync<ExchangeRate>();
+        }
+        else
+        {
+            errorString = $"There was an error getting our exchangeRat : {respones.ReasonPhrase}";
+        }
     }
 }
