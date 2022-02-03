@@ -27,7 +27,7 @@
         Countries = CountriesData.GetAllCountries();
 
         var request = new HttpRequestMessage(HttpMethod.Get,
-        "");
+        "https://api.nbp.pl/api/exchangerates/tables/A");
 
         var client = _clientFactory.CreateClient();
 
