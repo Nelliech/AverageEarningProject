@@ -1,0 +1,19 @@
+﻿
+@page "/MonthlyEarning/{Rate:float}/{Code}"
+
+<h3>MonthlyEarning</h3>
+
+@code {
+
+    [Parameter]
+    public float Rate{ get; set; }
+    [Parameter]
+
+    public string Code{ get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+}
