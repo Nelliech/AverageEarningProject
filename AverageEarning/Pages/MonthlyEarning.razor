@@ -1,19 +1,26 @@
 ﻿
 @page "/MonthlyEarning/{Rate:float}/{Code}"
+@using AverageEarning.Services.Interface
 
 <h3>MonthlyEarning</h3>
 
 @code {
 
+    [Inject]
+    protected ICountriesData CountriesData { get; set; }
+
     [Parameter]
     public float Rate{ get; set; }
-    [Parameter]
 
+    [Parameter]
     public string Code{ get; set; }
 
+    
+
+    public ICollection<Country> Countries{ get;set; }
 
     protected override async Task OnInitializedAsync()
     {
-
+        Countries = CountriesData.GetAllCountries();
     }
 }
