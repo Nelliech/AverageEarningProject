@@ -3,7 +3,16 @@
 @using AverageEarning.Services.Interface
 
 <h3>MonthlyEarning</h3>
-
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <div class="h2">@errorString</div>
+}else if(exchangeRate is null)
+{
+    <div class="h4">Loading...</div>
+}
+else{
+    <div>git</div>
+}
 @code {
 
     [Inject]
@@ -17,7 +26,7 @@
     [Parameter]
     public string Code{ get; set; }
 
-    ExchangeRate exchangeRate;
+    List<ExchangeRate> exchangeRate;
     string errorString;
 
     public ICollection<Country> Countries{ get;set; }
@@ -35,7 +44,8 @@
 
         if(respones.IsSuccessStatusCode)
         {
-            exchangeRate = await respones.Content.ReadFromJsonAsync<ExchangeRate>();
+            exchangeRate = await respones.Content.ReadFromJsonAsync<List<ExchangeRate>>();
+            errorString = null;
         }
         else
         {
