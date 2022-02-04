@@ -10,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ICountriesData, CountriesData>();
+builder.Services.AddScoped<IExchange, Exchange>();
 
 var app = builder.Build();
 
