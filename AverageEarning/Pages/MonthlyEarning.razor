@@ -22,48 +22,4 @@ else{
         }
     </div>
 }
-@code {
 
-    [Inject]
-    protected ICountriesData CountriesData { get; set; }
-    [Inject]
-    protected IExchange Exchange { get; set; }
-    [Inject]
-    protected IHttpClientFactory _clientFactory { get; set; }
-
-    [Parameter]
-    public float Rate{ get; set; }
-
-    [Parameter]
-    public string Code{ get; set; }
-
-    List<ExchangeRate> exchangeRate;
-    List<Payout> Payouts;
-    string errorString;
-
-    public ICollection<Country> Countries{ get;set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Countries = CountriesData.GetAllCountries();
-
-        var request = new HttpRequestMessage(HttpMethod.Get,
-        "https://api.nbp.pl/api/exchangerates/tables/A?format=json");
-
-        var client = _clientFactory.CreateClient();
-
-        HttpResponseMessage respones = await client.SendAsync(request);
-
-        if(respones.IsSuccessStatusCode)
-        {
-            exchangeRate = await respones.Content.ReadFromJsonAsync<List<ExchangeRate>>();
-            errorString = null;
-        }
-        else
-        {
-            errorString = $"There was an error getting our exchangeRat : {respones.ReasonPhrase}";
-        }
-        Payouts = Exchange.ExchangeToPLN(Rate, Code, exchangeRate, Countries);
-        var q = 53;
-    }
-}
