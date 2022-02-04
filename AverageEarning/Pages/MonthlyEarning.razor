@@ -11,7 +11,16 @@
     <div class="h4">Loading...</div>
 }
 else{
-    <div>git</div>
+    <div> Przy zarobku @Rate @Code Brutto dziennie</div>
+    <div> Zarobisz w ciągu miesiąca (22 dni) : </div>
+    <div>
+        @foreach(var payout in Payouts)
+        {
+            <div>
+                W @payout.CountryName : @payout.Rate @payout.Code Netto
+            </div>
+        }
+    </div>
 }
 @code {
 
