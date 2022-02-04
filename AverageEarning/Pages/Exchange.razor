@@ -14,18 +14,4 @@
         <button type="submit" class="btn btn-primary">Policz</button>
     </div>
 </EditForm>
-@code {
-    public DailyRate dailyRate { get; set; }
-    [Inject]
-    public NavigationManager NavManager { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        dailyRate = new DailyRate();
-    }
-
-    private async void RecalculateStake()
-    {
-        NavManager.NavigateTo("/MonthlyEarning/" + dailyRate.Rate +"/"+dailyRate.Code);
-    }
-}
