@@ -8,7 +8,7 @@
     public enum Code
     {
         PLN,
-        USD,
-        Euro
+        GBD,
+        EUR
     }
 }
